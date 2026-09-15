@@ -62,26 +62,29 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --radius: 1rem;
+  --background: oklch(0.14 0.02 160);
+  --foreground: oklch(0.98 0.01 150);
+  --card: oklch(0.19 0.025 162);
+  --card-foreground: oklch(0.98 0.01 150);
+  --popover: oklch(0.19 0.025 162);
+  --popover-foreground: oklch(0.98 0.01 150);
+  --primary: oklch(0.82 0.23 146);
+  --primary-foreground: oklch(0.15 0.05 150);
+  --secondary: oklch(0.26 0.03 165);
+  --secondary-foreground: oklch(0.98 0.01 150);
+  --muted: oklch(0.24 0.02 165);
+  --muted-foreground: oklch(0.75 0.02 160);
+  --accent: oklch(0.72 0.17 195);
+  --accent-foreground: oklch(0.15 0.05 150);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.98 0.01 150);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.82 0.23 146);
+  --gradient-hero: linear-gradient(135deg, oklch(0.82 0.23 146 / 0.9), oklch(0.72 0.17 195 / 0.75));
+  --gradient-surface: linear-gradient(160deg, oklch(0.22 0.03 165), oklch(0.15 0.02 170));
+  --shadow-glow: 0 0 60px -12px oklch(0.82 0.23 146 / 0.55);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +143,40 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+  }
+}
+
+@utility surface-panel {
+  background-image: var(--gradient-surface);
+  border: 1px solid var(--color-border);
+}
+
+@utility text-gradient {
+  background-image: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glow {
+  box-shadow: var(--shadow-glow);
+}
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  &[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
   }
 }
