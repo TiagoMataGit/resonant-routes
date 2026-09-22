@@ -14,6 +14,8 @@ import {
   Zap,
 } from "lucide-react";
 import heroImage from "@/assets/hero-listener.jpg";
+import { BookingSection } from "@/components/BookingSection";
+import { ChatWidget } from "@/components/ChatWidget";
 import { Reveal } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
@@ -161,6 +163,9 @@ function Landing() {
             </a>
             <a className="transition-colors hover:text-foreground" href="#faq">
               FAQ
+            </a>
+            <a className="transition-colors hover:text-foreground" href="#agendar">
+              Agendar reunião
             </a>
           </div>
           <a
@@ -323,9 +328,13 @@ function Landing() {
         </div>
       </section>
 
+      <BookingSection />
+
       <footer className="border-t border-border/60 py-10 text-center text-sm text-muted-foreground">
         Resonance — sound without interruption.
       </footer>
+
+      <ChatWidget />
     </main>
   );
 }
