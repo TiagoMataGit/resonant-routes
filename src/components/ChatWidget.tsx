@@ -89,7 +89,6 @@ export function ChatWidget() {
               {messages.map((message) => (
                 <Message from={message.role} key={message.id}>
                   <MessageContent
-                    variant={message.role === "user" ? "contained" : "flat"}
                     className={
                       message.role === "user" ? "bg-primary text-primary-foreground" : undefined
                     }
